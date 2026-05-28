@@ -1,0 +1,45 @@
+{
+  "_comment": "Expected dependency tree for SCA-5589 regression test. neo4j-graphrag==1.6.0 is the ONLY direct dependency. All others (pypdf, pydantic, fsspec, neo4j, numpy, etc.) must be TRANSITIVE (children). The bogus package 'this-package-does-not-exist' is not resolved and will not appear in the tree.",
+  "direct_dependencies": [
+    {
+      "artifactId": "neo4j-graphrag",
+      "version": "1.6.0",
+      "_note": "pip artifact format: neo4j_graphrag-1.6.0-py3-none-any.whl"
+    }
+  ],
+  "transitive_dependencies": [
+    {
+      "artifactId": "pypdf",
+      "version": "5.9.0",
+      "parent": "neo4j-graphrag",
+      "_note": "CRITICAL: Must be transitive under neo4j-graphrag. Pre-fix this appeared at top-level as direct."
+    },
+    {
+      "artifactId": "pydantic",
+      "parent": "neo4j-graphrag",
+      "_note": "Pre-fix this appeared at top-level as direct."
+    },
+    {
+      "artifactId": "fsspec",
+      "parent": "neo4j-graphrag",
+      "_note": "Pre-fix this appeared at top-level as direct."
+    },
+    {
+      "artifactId": "neo4j",
+      "parent": "neo4j-graphrag",
+      "_note": "Pre-fix this appeared at top-level as direct."
+    },
+    {
+      "artifactId": "numpy",
+      "parent": "neo4j-graphrag",
+      "_note": "Pre-fix this appeared at top-level as direct."
+    }
+  ],
+  "summary": {
+    "expected_direct_count": 1,
+    "expected_total_count_approx": 13,
+    "expected_package_manager": "PIP",
+    "bug_reference": "SCA-5589",
+    "fix_validation": "direct_count == 1 confirms the fix is working; direct_count > 1 (especially == 13) confirms the bug is still present"
+  }
+}
